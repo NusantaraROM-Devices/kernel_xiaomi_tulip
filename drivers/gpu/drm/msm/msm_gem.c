@@ -1173,9 +1173,15 @@ struct drm_gem_object *msm_gem_import(struct drm_device *dev,
 
 	size = PAGE_ALIGN(size);
 
+<<<<<<< HEAD
 	obj = msm_gem_new_impl(dev, size, MSM_BO_WC, false);
 	if (IS_ERR(obj))
 		return obj;
+=======
+	ret = msm_gem_new_impl(dev, size, MSM_BO_WC, &obj);
+	if (ret)
+		return ERR_PTR(ret);
+>>>>>>> bedab629a09ae0e564ece7e7ce37cd49e62f206d
 
 	drm_gem_private_object_init(dev, obj, size);
 
